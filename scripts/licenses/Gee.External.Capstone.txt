@@ -1,0 +1,2 @@
+﻿
+Placeholder: Could not locate license inside the package. Please verify the license manually.

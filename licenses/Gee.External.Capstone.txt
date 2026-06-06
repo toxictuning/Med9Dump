@@ -1,0 +1,62 @@
+﻿# create licenses directory
+New-Item -ItemType Directory -Force -Path .\licenses
+
+# write files (replace placeholders where needed)
+@"
+## Third‑party libraries
+
+This project uses third‑party components. Their license texts are included under `licenses/`.
+
+- Capstone Engine — PowerPC disassembly engine — BSD‑3‑Clause. See `licenses/CAPSTONE-BSD-3.txt`.
+- Gee.External.Capstone — .NET wrapper for Capstone. See `licenses/Gee.External.Capstone.txt`.
+
+If you redistribute native Capstone binaries or the wrapper, include the corresponding license files with your distribution.
+"@ | Out-File -Encoding utf8 README-THIRD_PARTY.md
+
+@"
+BSD 3-Clause License
+
+Copyright (c) <year>, <owner>
+All rights reserved.
+
+Redistribution and use in source and binary forms, with or without
+modification, are permitted provided that the following conditions are met:
+
+1. Redistributions of source code must retain the above copyright notice, this
+   list of conditions and the following disclaimer.
+
+2. Redistributions in binary form must reproduce the above copyright notice,
+   this list of conditions and the following disclaimer in the documentation
+   and/or other materials provided with the distribution.
+
+3. Neither the name of the copyright holder nor the names of its
+   contributors may be used to endorse or promote products derived from
+   this software without specific prior written permission.
+
+THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS "AS IS"
+AND ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO, THE
+IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE ARE
+DISCLAIMED. IN NO EVENT SHALL THE COPYRIGHT HOLDER OR CONTRIBUTORS BE LIABLE
+FOR ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY, OR CONSEQUENTIAL
+DAMAGES (INCLUDING, BUT NOT LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS OR
+SERVICES; LOSS OF USE, DATA, OR PROFITS; OR BUSINESS INTERRUPTION) HOWEVER
+CAUSED AND ON ANY THEORY OF LIABILITY, WHETHER IN CONTRACT, STRICT LIABILITY,
+OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE
+OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
+"@ | Out-File -Encoding utf8 .\licenses\CAPSTONE-BSD-3.txt
+
+@"
+Placeholder: please verify the license for the NuGet package 'Gee.External.Capstone' (or its upstream repository) and replace this file with the exact license text and copyright lines.
+
+Suggested tasks to verify:
+- Check the package page on nuget.org or the project's GitHub repo.
+- If the wrapper is MIT/BSD/Apache, paste the full license text here and retain copyright.
+"@ | Out-File -Encoding utf8 .\licenses\Gee.External.Capstone.txt
+
+# Append the README third-party section to the top-level README.md (or merge manually)
+Get-Content README-THIRD_PARTY.md | Add-Content -Path README.md
+
+# Git add/commit
+git add README.md LICENSE .\licenses\CAPSTONE-BSD-3.txt .\licenses\Gee.External.Capstone.txt
+git commit -m "Add third-party license (Capstone) and placeholder for Gee.External.Capstone; update README third-party section"
+git push origin master

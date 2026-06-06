@@ -77,9 +77,16 @@
     <Content Include="1K0907115S_0030.bin">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
+    <Content Include="licenses\CAPSTONE-BSD-3.txt" />
+    <Content Include="licenses\CAPSTONE-LICENSE.txt" />
+    <Content Include="licenses\GEE-EXTERNAL-CAPSTONE-LICENSE.txt" />
+    <Content Include="licenses\Gee.External.Capstone.txt" />
     <None Include="App.config" />
+    <None Include="CONTRIBUTING.md" />
     <None Include="LICENSE" />
     <None Include="packages.config" />
+    <None Include="README.md" />
+    <None Include="scripts\fetch-gee-external-capstone-license.ps1" />
     <None Include="TKMWL-RAM-Zellen.csv">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>
